@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#d23226" />
+
+    <!-- Osano Cookies Consent Script start -->
+    <script src="https://cmp.osano.com/AzydZ7TEJc3cu8mk6/00bef904-bed7-4680-9402-e81ce5464c54/osano.js"></script>
+    <!-- Osano Cookies Consent Script end -->
+
+    <style>
+        .ipm-osano-js {
+            display: none;
+        }
+
+        .osano-cm-dialog {
+            align-items: flex-start;
+            background-color: #e6e6e6;
+            color: #000;
+            max-height: 80vh;
+        }
+
+        .osano-cm-link {
+            color: #0079d1;
+            text-decoration: none;
+        }
+
+        .osano-cm-link:hover,
+        .osano-cm-link:focus {
+            color: #0079d1;
+            text-decoration: underline;
+        }
+
+        .osano-cm-content__message {
+            margin-bottom: 1.5em;
+            padding-bottom: 0;
+        }
+
+        .osano-cm-close {
+            background-color: #757575;
+            border-color: #757575;
+            stroke: #fff;
+            padding: 3px;
+        }
+
+        .osano-cm-dialog__close:hover {
+            stroke: #fff;
+        }
+
+        .osano-cm-widget {
+            display: none;
+        }
+
+        .osano-cm-dialog__content.osano-cm-content span,
+        .osano-cm-dialog__content.osano-cm-content p {
+            float: left;
+            clear: both;
+            display: block;
+        }
+
+        .osano-cm-storage-policy {
+            display: inline-block;
+            float: left;
+            clear: both;
+        }
+
+        ul.osano-cm-dialog__list.osano-cm-list {
+            display: flex;
+            flex-direction: column;
+            padding: 0 0 15px 40px;
+            margin: 0 0 15px;
+        }
+
+        .osano-cm-drawer-links__link {
+            display: block;
+            padding-bottom: 8px;
+        }
+
+        .osano-cm-drawer-links {
+            margin: 0;
+            padding-bottom: 2em;
+            padding-top: 0.5em;
+        }
+
+        p.osano-cm-content__usage-list.osano-cm-usage-list {
+            margin-top: 0;
+        }
+
+        .osano-cm-dialog--type_bar .osano-cm-dialog__list .osano-cm-label {
+            padding-top: 0;
+            font-weight: 700;
+            padding-left: 5px;
+        }
+
+        .osano-cm-button {
+            border-radius: 0.25em;
+            border-style: solid;
+            border-width: thin;
+            cursor: pointer;
+            flex: 1 1 auto;
+            font-size: 1em;
+            font-weight: 700;
+            line-height: 1;
+            margin: 0.125em;
+            min-width: 6em;
+            padding: 0.75em 0.75em;
+            transition-duration: .2s;
+            transition-property: background-color;
+            transition-timing-function: ease-out;
+        }
+
+        .osano-cm-button {
+            background-color: #fff;
+            border-color: #0079d1;
+            color: #0079d1;
+        }
+
+        .osano-cm-button:focus,
+        .osano-cm-button:hover {
+            background-color: #0079d1;
+            color: #fff;
+        }
+
+        .osano-cm-toggle__switch:hover {
+            cursor: pointer;
+            background-color: #757575 !important;
+            border: 2px solid #ababab !important;
+        }
+
+        .osano-cm-toggle__switch {
+            background-color: #ababab;
+        }
+
+        .osano-cm-toggle__input:checked+.osano-cm-toggle__switch {
+            background-color: #0079D1;
+            border-color: #0079D1;
+        }
+
+        .osano-cm-content__message.osano-cm-message::before {
+            content: "Manage your Cookie Preferences";
+            display: block;
+            padding: 0 0 0.75rem;
+            font-size: 1.55rem;
+            font-weight: bold;
+        }
+
+        .osano-cm-toggle__input:disabled:checked+.osano-cm-toggle__switch,
+        .osano-cm-toggle__input:disabled:checked:focus+.osano-cm-toggle__switch,
+        .osano-cm-toggle__input:disabled:checked:hover+.osano-cm-toggle__switch {
+            background-color: #0079D1;
+            border-color: #0079D1;
+        }
+
+        @media (min-width: 768px) {
+            .osano-cm-dialog {
+                padding-right: 2.5em;
+            }
+        }
+
+        /* Desktop */
+
+        @media (min-width: 1024px) {
+            .osano-cm-dialog__content.osano-cm-content span,
+            .osano-cm-dialog__content.osano-cm-content p {
+                max-width: 75%;
+                float: left;
+                clear: both;
+                display: block;
+            }
+            ul.osano-cm-dialog__list.osano-cm-list {
+                display: flex;
+                flex-direction: column;
+                padding: 0 0 50px 20px;
+                margin: 0 20px 20px;
+            }
+        }
+    </style>
+
+    <script>
+        /**
+         * Enable/isable script loaing.
+         *
+         * @param {string} consentProperty Consent type.
+         * @param {string} consentValue    Consent value.
+         */
+        const toggleScript = (consentProperty, consentValue) => {
+
+            // Get all the scripts with the current consent type.
+            const allScripts = document.querySelectorAll("script[data-osano='" + consentProperty + "']");
+
+
+
+            if (!allScripts.length) {
+                return;
+            }
+
+            // Loop through all the found scripts and toggle their
+            allScripts.forEach((script) => {
+
+                // Flag variable to check if the script should be replaced.
+                let shouldReplaceScript = false;
+
+                // Create the clone of the replaceable script.
+                const newScript = document.createElement('script');
+                newScript.textContent = script.textContent;
+                newScript.src = script.src;
+
+                /**
+                 * If the current consent type is already accepted, allow the script to load.
+                 * If not, then don't load the script.
+                 */
+                if ('ACCEPT' === consentValue) {
+
+                    shouldReplaceScript = true;
+
+                    newScript.type = 'text/javascript';
+                    newScript.className = '';
+
+                } else if ('DENY' === consentValue) {
+
+                    shouldReplaceScript = false;
+
+                    script.type = 'text/plain';
+                    script.className = 'ipm-osano-js';
+                }
+
+                // Replace the new script node with the current script.
+                if (shouldReplaceScript) {
+                    document.body.appendChild(newScript);
+                }
+            });
+        };
+
+        /**
+         * Check user's consent.
+         */
+        const checkConsent = () => {
+
+            const consent = window.Osano.cm.getConsent();
+            for (const property in consent) {
+
+                // Skip essential scripts.
+                if ('ESSENTIAL' === property) {
+                    continue;
+                }
+
+                toggleScript(property, consent[property]);
+            }
+        };
+
+        /**
+         * Osano initiliazed event.
+         */
+        // Osano.cm.addEventListener( 'osano-cm-initialized', () => {
+        // 	if ( window.Osano.cm.countryCode === 'us' ) {
+        // 		window.Osano.cm.hideDialog();
+        // 	}
+        // } );
+
+        /**
+         * Check consent interaction by Osano's consent saved event.
+         */
+        const checkConsentInteraction = () => {
+
+            Osano.cm.addEventListener('osano-cm-consent-saved', () => {
+                checkConsent();
+            });
+        };
+
+        if ('complete' === document.readyState) {
+            checkConsentInteraction();
+        } else {
+
+            document.onreadystatechange = function() {
+
+                if ('complete' === document.readyState) {
+                    checkConsentInteraction();
+                }
+            }
+        }
+    </script>
+    <script>
+        (function(html) {
+            html.className = html.className.replace(/\bno-js\b/, 'js')
+        })(document.documentElement);
+    </script>
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+    <!-- This site is optimized with the Yoast SEO plugin v21.4 - https://yoast.com/wordpress/plugins/seo/ -->
+    <title>Home | Masters in Trading</title>
+    <link rel="canonical" href="https://mastersintrading.com/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Home | Masters in Trading" />
+    <meta property="og:url" content="https://mastersintrading.com/" />
+    <meta property="og:site_name" content="Masters in Trading" />
+    <meta property="article:publisher" content="https://www.facebook.com/MastersinTrading/" />
+    <meta property="article:modified_time" content="2024-04-30T15:50:12+00:00" />
+    <meta property="og:image" content="https://mastersintrading.com/wp-content/uploads/2024/04/MIT-Fallback-Image_1200x675.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://mastersintrading.com/wp-content/uploads/2024/04/MIT-Fallback-Image_1200x675.jpg" />
+    <meta name="twitter:site" content="@Mastersintradng" />
+    <script type="application/ld+json" class="yoast-schema-graph">
+        {
+            "@context": "https://schema.org",
+            "@graph": [{
+                "@type": "WebPage",
+                "@id": "https://mastersintrading.com/",
+                "url": "https://mastersintrading.com/",
+                "name": "Home | Masters in Trading",
+                "isPartOf": {
+                    "@id": "https://mastersintrading.com/#website"
+                },
+                "about": {
+                    "@id": "https://mastersintrading.com/#organization"
+                },
+                "primaryImageOfPage": {
+                    "@id": "https://mastersintrading.com/#primaryimage"
+                },
+                "image": {
+                    "@id": "https://mastersintrading.com/#primaryimage"
+                },
+                "thumbnailUrl": "https://mastersintrading.com/wp-content/uploads/2024/04/image-1.png",
+                "datePublished": "2024-03-06T09:52:26+00:00",
+                "dateModified": "2024-04-30T15:50:12+00:00",
+                "breadcrumb": {
+                    "@id": "https://mastersintrading.com/#breadcrumb"
+                },
+                "inLanguage": "en-US",
+                "potentialAction": [{
+                    "@type": "ReadAction",
+                    "target": ["https://mastersintrading.com/"]
+                }]
+            }, {
+                "@type": "ImageObject",
+                "inLanguage": "en-US",
+                "@id": "https://mastersintrading.com/#primaryimage",
+                "url": "https://mastersintrading.com/wp-content/uploads/2024/04/image-1.png",
+                "contentUrl": "https://mastersintrading.com/wp-content/uploads/2024/04/image-1.png",
+                "width": 265,
+                "height": 349
+            }, {
+                "@type": "BreadcrumbList",
+                "@id": "https://mastersintrading.com/#breadcrumb",
+                "itemListElement": [{
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home"
+                }]
+            }, {
+                "@type": "WebSite",
+                "@id": "https://mastersintrading.com/#website",
+                "url": "https://mastersintrading.com/",
+                "name": "Masters in Trading",
+                "description": "",
+                "publisher": {
+                    "@id": "https://mastersintrading.com/#organization"
+                },
+                "potentialAction": [{
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://mastersintrading.com/?s={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }],
+                "inLanguage": "en-US"
+            }, {
+                "@type": "Organization",
+                "@id": "https://mastersintrading.com/#organization",
+                "name": "Masters in Trading",
+                "url": "https://mastersintrading.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "inLanguage": "en-US",
+                    "@id": "https://mastersintrading.com/#/schema/logo/image/",
+                    "url": "https://mastersintrading.com/wp-content/uploads/2024/04/MIT-Fallback-Image_720x720.jpg",
+                    "contentUrl": "https://mastersintrading.com/wp-content/uploads/2024/04/MIT-Fallback-Image_720x720.jpg",
+                    "width": 720,
+                    "height": 720,
+                    "caption": "Masters in Trading"
+                },
+                "image": {
+                    "@id": "https://mastersintrading.com/#/schema/logo/image/"
+                },
+                "sameAs": ["https://www.facebook.com/MastersinTrading/", "https://twitter.com/Mastersintradng", "https://www.youtube.com/@MastersintradingLIVE"]
+            }]
+        }
+    </script>
+    <meta name="google-site-verification" content="qPTtsZ_7D4tz-ct_3q6RmhneXTio17S9skLM1pPlbQA" />
+    <!-- / Yoast SEO plugin. -->
+
+
+    <link rel='dns-prefetch' href='//mastersintrading.com' />
+    <link rel='dns-prefetch' href='//se.monetate.net' />
+    <link rel='dns-prefetch' href='//use.typekit.net' />
+    <link rel='stylesheet' id='wp-block-library-css' href='https://mastersintrading.com/wp-includes/css/dist/block-library/style.min.css?ver=6.5.2' type='text/css' media='all' />
+    <style id='safe-svg-svg-icon-style-inline-css' type='text/css'>
+        .safe-svg-cover {
+            text-align: center
+        }
+
+        .safe-svg-cover .safe-svg-inside {
+            display: inline-block;
+            max-width: 100%
+        }
+
+        .safe-svg-cover svg {
+            height: 100%;
+            max-height: 100%;
+            max-width: 100%;
+            width: 100%
+        }
+    </style>
+    <style id='elasticpress-related-posts-style-inline-css' type='text/css'>
+        .editor-styles-wrapper .wp-block-elasticpress-related-posts ul,
+        .wp-block-elasticpress-related-posts ul {
+            list-style-type: none;
+            padding: 0
+        }
+
+        .editor-styles-wrapper .wp-block-elasticpress-related-posts ul li a>div {
+            display: inline
+        }
+    </style>
+    <style id='global-styles-inline-css' type='text/css'>
+        body {
+            --wp--preset--color--black: #000000;
+            --wp--preset--color--cyan-bluish-gray: #abb8c3;
+            --wp--preset--color--white: var(--c-white);
+            --wp--preset--color--pale-pink: #f78da7;
+            --wp--preset--color--vivid-red: #cf2e2e;
+            --wp--preset--color--luminous-vivid-orange: #ff6900;
+            --wp--preset--color--luminous-vivid-amber: #fcb900;
+            --wp--preset--color--light-green-cyan: #7bdcb5;
+            --wp--preset--color--vivid-green-cyan: #00d084;
+            --wp--preset--color--pale-cyan-blue: #8ed1fc;
+            --wp--preset--color--vivid-cyan-blue: #0693e3;
+            --wp--preset--color--vivid-purple: #9b51e0;
+            --wp--preset--color--light-gray: var(--c-light-gray);
+            --wp--preset--color--mid-gray: var(--c-mid-gray);
+            --wp--preset--color--dark-gray: var(--c-gray-700);
+            --wp--preset--color--navy: var(--c-navy);
+            --wp--preset--color--orange: var(--c-brand-orange-01);
+            --wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg, rgba(6, 147, 227, 1) 0%, rgb(155, 81, 224) 100%);
+            --wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg, rgb(122, 220, 180) 0%, rgb(0, 208, 130) 100%);
+            --wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
+            --wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg, rgba(255, 105, 0, 1) 0%, rgb(207, 46, 46) 100%);
+            --wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg, rgb(238, 238, 238) 0%, rgb(169, 184, 195) 100%);
+            --wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg, rgb(74, 234, 220) 0%, rgb(151, 120, 209) 20%, rgb(207, 42, 186) 40%, rgb(238, 44, 130) 60%, rgb(251, 105, 98) 80%, rgb(254, 248, 76) 100%);
+            --wp--preset--gradient--blush-light-purple: linear-gradient(135deg, rgb(255, 206, 236) 0%, rgb(152, 150, 240) 100%);
+            --wp--preset--gradient--blush-bordeaux: linear-gradient(135deg, rgb(254, 205, 165) 0%, rgb(254, 45, 45) 50%, rgb(107, 0, 62) 100%);
+            --wp--preset--gradient--luminous-dusk: linear-gradient(135deg, rgb(255, 203, 112) 0%, rgb(199, 81, 192) 50%, rgb(65, 88, 208) 100%);
+            --wp--preset--gradient--pale-ocean: linear-gradient(135deg, rgb(255, 245, 203) 0%, rgb(182, 227, 212) 50%, rgb(51, 167, 181) 100%);
+            --wp--preset--gradient--electric-grass: linear-gradient(135deg, rgb(202, 248, 128) 0%, rgb(113, 206, 126) 100%);
+            --wp--preset--gradient--midnight: linear-gradient(135deg, rgb(2, 3, 129) 0%, rgb(40, 116, 252) 100%);
+            --wp--preset--font-size--small: 13px;
+            --wp--preset--font-size--medium: 20px;
+            --wp--preset--font-size--large: 36px;
+            --wp--preset--font-size--x-large: 42px;
+            --wp--preset--font-size--h-1: var(--fs-h1);
+            --wp--preset--font-size--h-2: var(--fs-h2);
+            --wp--preset--font-size--h-3: var(--fs-h3);
+            --wp--preset--font-size--h-4: var(--fs-h4);
+            --wp--preset--font-size--h-5: var(--fs-h5);
+            --wp--preset--font-size--body-large: var(--fs-body-large);
+            --wp--preset--font-size--body-medium: var(--fs-body-med);
+            --wp--preset--font-size--body-small: var(--fs-body-small);
+            --wp--preset--font-size--body-xsmall: var(--fs-body-xsmall);
+            --wp--preset--font-size--body-xxsmall: var(--fs-body-xxsmall);
+            --wp--preset--font-size--display-l: var(--fs-display-l);
+            --wp--preset--font-size--display-m: var(--fs-display-m);
+            --wp--preset--spacing--20: 0.44rem;
+            --wp--preset--spacing--30: 0.67rem;
+            --wp--preset--spacing--40: 1rem;
+            --wp--preset--spacing--50: 1.5rem;
+            --wp--preset--spacing--60: 2.25rem;
+            --wp--preset--spacing--70: 3.38rem;
+            --wp--preset--spacing--80: 5.06rem;
+            --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+            --wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
+            --wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
+            --wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);
+            --wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
+        }
+
+        .wp-block-button .wp-block-button__link {
+            --wp--preset--font-size--body-xsmall: var(--fs-body-xsmall);
+            --wp--preset--font-size--body-small: var(--fs-body-small);
+        }
+
+        .wp-block-heading {
+            --wp--preset--font-family--termina: var(--f-display);
+            --wp--preset--font-family--inter: var(--f-sans);
+        }
+
+        .wp-block-group {
+            --wp--preset--color--dark-blue: var(--c-dark-blue);
+            --wp--preset--color--brand-blue: var(--c-brand-blue);
+            --wp--preset--color--brand-blue-80: var(--c-brand-blue-80);
+            --wp--preset--color--brand-blue-65: var(--c-brand-blue-65);
+            --wp--preset--color--brand-blue-40: var(--c-brand-blue-40);
+            --wp--preset--color--blue-gray-01: var(--c-blue-gray-01);
+            --wp--preset--color--blue-gray-02: var(--c-blue-gray-02);
+            --wp--preset--color--blue-gray-03: var(--c-blue-gray-03);
+            --wp--preset--color--blue-gray-04: var(--c-blue-gray-04);
+            --wp--preset--color--med-gray-01: var(--c-med-gray-01);
+            --wp--preset--color--med-gray-02: var(--c-med-gray-02);
+            --wp--preset--color--med-gray-03: var(--c-med-gray-03);
+            --wp--preset--color--med-gray-04: var(--c-med-gray-04);
+            --wp--preset--color--brand-orange-01: var(--c-brand-orange-01);
+            --wp--preset--color--brand-orange-02: var(--c-brand-orange-02);
+            --wp--preset--color--brand-orange-03: var(--c-brand-orange-03);
+            --wp--preset--color--brand-orange-04: var(--c-brand-orange-04);
+            --wp--preset--color--light-mid-gray-2: var(--c-light-mid-gray-2);
+            --wp--preset--color--light-mid-gray-3: var(--c-light-mid-gray-3);
+            --wp--preset--color--mid-gray: var(--c-mid-gray);
+            --wp--preset--color--gray-700: var(--c-gray-700);
+            --wp--preset--color--light-gray-01: var(--c-light-gray-01);
+            --wp--preset--color--light-gray-02: var(--c-light-gray-02);
+            --wp--preset--color--light-gray-03: var(--c-light-gray-03);
+            --wp--preset--color--light-gray-04: var(--c-light-gray-04);
+            --wp--preset--color--neutral-5: var(--c-neutral-5);
+            --wp--preset--color--neutral-10: var(--c-neutral-10);
+            --wp--preset--color--neutral-20: var(--c-neutral-20);
+            --wp--preset--color--neutral-40: var(--c-neutral-40);
+            --wp--preset--color--neutral-60: var(--c-neutral-60);
+            --wp--preset--color--neutral-80: var(--c-neutral-80);
+            --wp--preset--color--neutral-90: var(--c-neutral-90);
+            --wp--preset--color--white: var(--c-white);
+            --wp--preset--color--black: var(--c-black);
+            --wp--preset--gradient--light-gray-to-mid-gray: linear-gradient(180deg, rgba(246, 247, 251, 1) 0%, rgba(219, 226, 232, 1) 100%);
+        }
+
+        body {
+            margin: 0;
+            --wp--style--global--content-size: 979px;
+            --wp--style--global--wide-size: 1240px;
+        }
+
+        .wp-site-blocks>.alignleft {
+            float: left;
+            margin-right: 2em;
+        }
+
+        .wp-site-blocks>.alignright {
+            float: right;
+            margin-left: 2em;
+        }
+
+        .wp-site-blocks>.aligncenter {
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        :where(.wp-site-blocks)>* {
+            margin-block-start: 24px;
+            margin-block-end: 0;
+        }
+
+        :where(.wp-site-blocks)> :first-child:first-child {
+            margin-block-start: 0;
+        }
+
+        :where(.wp-site-blocks)> :last-child:last-child {
+            margin-block-end: 0;
+        }
+
+        body {
+            --wp--style--block-gap: 24px;
+        }
+
+        :where(body .is-layout-flow)> :first-child:first-child {
+            margin-block-start: 0;
+        }
+
+        :where(body .is-layout-flow)> :last-child:last-child {
+            margin-block-end: 0;
+        }
+
+        :where(body .is-layout-flow)>* {
+            margin-block-start: 24px;
+            margin-block-end: 0;
+        }
+
+        :where(body .is-layout-constrained)> :first-child:first-child {
+            margin-block-start: 0;
+        }
+
+        :where(body .is-layout-constrained)> :last-child:last-child {
+            margin-block-end: 0;
+        }
+
+        :where(body .is-layout-constrained)>* {
+            margin-block-start: 24px;
+            margin-block-end: 0;
+        }
+
+        :where(body .is-layout-flex) {
+            gap: 24px;
+        }
+
+        :where(body .is-layout-grid) {
+            gap: 24px;
+        }
+
+        body .is-layout-flow>.alignleft {
+            float: left;
+            margin-inline-start: 0;
+            margin-inline-end: 2em;
+        }
+
+        body .is-layout-flow>.alignright {
+            float: right;
+            margin-inline-start: 2em;
+            margin-inline-end: 0;
+        }
+
+        body .is-layout-flow>.aligncenter {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        body .is-layout-constrained>.alignleft {
+            float: left;
+            margin-inline-start: 0;
+            margin-inline-end: 2em;
+        }
+
+        body .is-layout-constrained>.alignright {
+            float: right;
+            margin-inline-start: 2em;
+            margin-inline-end: 0;
+        }
+
+        body .is-layout-constrained>.aligncenter {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        body .is-layout-constrained> :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+            max-width: var(--wp--style--global--content-size);
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        body .is-layout-constrained>.alignwide {
+            max-width: var(--wp--style--global--wide-size);
+        }
+
+        body .is-layout-flex {
+            display: flex;
+        }
+
+        body .is-layout-flex {
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        body .is-layout-flex>* {
+            margin: 0;
+        }
+
+        body .is-layout-grid {
+            display: grid;
+        }
+
+        body .is-layout-grid>* {
+            margin: 0;
+        }
+
+        body {
+            padding-top: 0px;
+            padding-right: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+        }
+
+        a:where(:not(.wp-element-button)) {
+            text-decoration: underline;
+        }
+
+        .wp-element-button,
+        .wp-block-button__link {
+            background-color: #32373c;
+            border-width: 0;
+            color: #fff;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            padding: calc(0.667em + 2px) calc(1.333em + 2px);
+            text-decoration: none;
+        }
+
+        .has-black-color {
+            color: var(--wp--preset--color--black) !important;
+        }
+
+        .has-cyan-bluish-gray-color {
+            color: var(--wp--preset--color--cyan-bluish-gray) !important;
+        }
+
+        .has-white-color {
+            color: var(--wp--preset--color--white) !important;
+        }
+
+        .has-pale-pink-color {
+            color: var(--wp--preset--color--pale-pink) !important;
+        }
+
+        .has-vivid-red-color {
+            color: var(--wp--preset--color--vivid-red) !important;
+        }
+
+        .has-luminous-vivid-orange-color {
+            color: var(--wp--preset--color--luminous-vivid-orange) !important;
+        }
+
+        .has-luminous-vivid-amber-color {
+            color: var(--wp--preset--color--luminous-vivid-amber) !important;
+        }
+
+        .has-light-green-cyan-color {
+            color: var(--wp--preset--color--light-green-cyan) !important;
+        }
+
+        .has-vivid-green-cyan-color {
+            color: var(--wp--preset--color--vivid-green-cyan) !important;
+        }
+
+        .has-pale-cyan-blue-color {
+            color: var(--wp--preset--color--pale-cyan-blue) !important;
+        }
+
+        .has-vivid-cyan-blue-color {
+            color: var(--wp--preset--color--vivid-cyan-blue) !important;
+        }
+
+        .has-vivid-purple-color {
+            color: var(--wp--preset--color--vivid-purple) !important;
+        }
+
+        .has-light-gray-color {
+            color: var(--wp--preset--color--light-gray) !important;
+        }
+
+        .has-mid-gray-color {
+            color: var(--wp--preset--color--mid-gray) !important;
+        }
+
+        .has-dark-gray-color {
+            color: var(--wp--preset--color--dark-gray) !important;
+        }
+
+        .has-navy-color {
+            color: var(--wp--preset--color--navy) !important;
+        }
+
+        .has-orange-color {
+            color: var(--wp--preset--color--orange) !important;
+        }
+
+        .has-black-background-color {
+            background-color: var(--wp--preset--color--black) !important;
+        }
+
+        .has-cyan-bluish-gray-background-color {
+            background-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+        }
+
+        .has-white-background-color {
+            background-color: var(--wp--preset--color--white) !important;
+        }
+
+        .has-pale-pink-background-color {
+            background-color: var(--wp--preset--color--pale-pink) !important;
+        }
+
+        .has-vivid-red-background-color {
+            background-color: var(--wp--preset--color--vivid-red) !important;
+        }
+
+        .has-luminous-vivid-orange-background-color {
+            background-color: var(--wp--preset--color--luminous-vivid-orange) !important;
+        }
+
+        .has-luminous-vivid-amber-background-color {
+            background-color: var(--wp--preset--color--luminous-vivid-amber) !important;
+        }
+
+        .has-light-green-cyan-background-color {
+            background-color: var(--wp--preset--color--light-green-cyan) !important;
+        }
+
+        .has-vivid-green-cyan-background-color {
+            background-color: var(--wp--preset--color--vivid-green-cyan) !important;
+        }
+
+        .has-pale-cyan-blue-background-color {
+            background-color: var(--wp--preset--color--pale-cyan-blue) !important;
+        }
+
+        .has-vivid-cyan-blue-background-color {
+            background-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+        }
+
+        .has-vivid-purple-background-color {
+            background-color: var(--wp--preset--color--vivid-purple) !important;
+        }
+
+        .has-light-gray-background-color {
+            background-color: var(--wp--preset--color--light-gray) !important;
+        }
+
+        .has-mid-gray-background-color {
+            background-color: var(--wp--preset--color--mid-gray) !important;
+        }
+
+        .has-dark-gray-background-color {
+            background-color: var(--wp--preset--color--dark-gray) !important;
+        }
+
+        .has-navy-background-color {
+            background-color: var(--wp--preset--color--navy) !important;
+        }
+
+        .has-orange-background-color {
+            background-color: var(--wp--preset--color--orange) !important;
+        }
+
+        .has-black-border-color {
+            border-color: var(--wp--preset--color--black) !important;
+        }
+
+        .has-cyan-bluish-gray-border-color {
+            border-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+        }
+
+        .has-white-border-color {
+            border-color: var(--wp--preset--color--white) !important;
+        }
+
+        .has-pale-pink-border-color {
+            border-color: var(--wp--preset--color--pale-pink) !important;
+        }
+
+        .has-vivid-red-border-color {
+            border-color: var(--wp--preset--color--vivid-red) !important;
+        }
+
+        .has-luminous-vivid-orange-border-color {
+            border-color: var(--wp--preset--color--luminous-vivid-orange) !important;
+        }
+
+        .has-luminous-vivid-amber-border-color {
+            border-color: var(--wp--preset--color--luminous-vivid-amber) !important;
+        }
+
+        .has-light-green-cyan-border-color {
+            border-color: var(--wp--preset--color--light-green-cyan) !important;
+        }
+
+        .has-vivid-green-cyan-border-color {
+            border-color: var(--wp--preset--color--vivid-green-cyan) !important;
+        }
+
+        .has-pale-cyan-blue-border-color {
+            border-color: var(--wp--preset--color--pale-cyan-blue) !important;
+        }
+
+        .has-vivid-cyan-blue-border-color {
+            border-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+        }
+
+        .has-vivid-purple-border-color {
+            border-color: var(--wp--preset--color--vivid-purple) !important;
+        }
+
+        .has-light-gray-border-color {
+            border-color: var(--wp--preset--color--light-gray) !important;
+        }
+
+        .has-mid-gray-border-color {
+            border-color: var(--wp--preset--color--mid-gray) !important;
+        }
+
+        .has-dark-gray-border-color {
+            border-color: var(--wp--preset--color--dark-gray) !important;
+        }
+
+        .has-navy-border-color {
+            border-color: var(--wp--preset--color--navy) !important;
+        }
+
+        .has-orange-border-color {
+            border-color: var(--wp--preset--color--orange) !important;
+        }
+
+        .has-vivid-cyan-blue-to-vivid-purple-gradient-background {
+            background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;
+        }
+
+        .has-light-green-cyan-to-vivid-green-cyan-gradient-background {
+            background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;
+        }
+
+        .has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background {
+            background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;
+        }
+
+        .has-luminous-vivid-orange-to-vivid-red-gradient-background {
+            background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;
+        }
+
+        .has-very-light-gray-to-cyan-bluish-gray-gradient-background {
+            background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;
+        }
+
+        .has-cool-to-warm-spectrum-gradient-background {
+            background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;
+        }
+
+        .has-blush-light-purple-gradient-background {
+            background: var(--wp--preset--gradient--blush-light-purple) !important;
+        }
+
+        .has-blush-bordeaux-gradient-background {
+            background: var(--wp--preset--gradient--blush-bordeaux) !important;
+        }
+
+        .has-luminous-dusk-gradient-background {
+            background: var(--wp--preset--gradient--luminous-dusk) !important;
+        }
+
+        .has-pale-ocean-gradient-background {
+            background: var(--wp--preset--gradient--pale-ocean) !important;
+        }
+
+        .has-electric-grass-gradient-background {
+            background: var(--wp--preset--gradient--electric-grass) !important;
+        }
+
+        .has-midnight-gradient-background {
+            background: var(--wp--preset--gradient--midnight) !important;
+        }
+
+        .has-small-font-size {
+            font-size: var(--wp--preset--font-size--small) !important;
+        }
+
+        .has-medium-font-size {
+            font-size: var(--wp--preset--font-size--medium) !important;
+        }
+
+        .has-large-font-size {
+            font-size: var(--wp--preset--font-size--large) !important;
+        }
+
+        .has-x-large-font-size {
+            font-size: var(--wp--preset--font-size--x-large) !important;
+        }
+
+        .has-h-1-font-size {
+            font-size: var(--wp--preset--font-size--h-1) !important;
+        }
+
+        .has-h-2-font-size {
+            font-size: var(--wp--preset--font-size--h-2) !important;
+        }
+
+        .has-h-3-font-size {
+            font-size: var(--wp--preset--font-size--h-3) !important;
+        }
+
+        .has-h-4-font-size {
+            font-size: var(--wp--preset--font-size--h-4) !important;
+        }
+
+        .has-h-5-font-size {
+            font-size: var(--wp--preset--font-size--h-5) !important;
+        }
+
+        .has-body-large-font-size {
+            font-size: var(--wp--preset--font-size--body-large) !important;
+        }
+
+        .has-body-medium-font-size {
+            font-size: var(--wp--preset--font-size--body-medium) !important;
+        }
+
+        .has-body-small-font-size {
+            font-size: var(--wp--preset--font-size--body-small) !important;
+        }
+
+        .has-body-xsmall-font-size {
+            font-size: var(--wp--preset--font-size--body-xsmall) !important;
+        }
+
+        .has-body-xxsmall-font-size {
+            font-size: var(--wp--preset--font-size--body-xxsmall) !important;
+        }
+
+        .has-display-l-font-size {
+            font-size: var(--wp--preset--font-size--display-l) !important;
+        }
+
+        .has-display-m-font-size {
+            font-size: var(--wp--preset--font-size--display-m) !important;
+        }
+
+        .wp-block-button .wp-block-button__link.has-body-xsmall-font-size {
+            font-size: var(--wp--preset--font-size--body-xsmall) !important;
+        }
+
+        .wp-block-button .wp-block-button__link.has-body-small-font-size {
+            font-size: var(--wp--preset--font-size--body-small) !important;
+        }
+
+        .wp-block-heading.has-termina-font-family {
+            font-family: var(--wp--preset--font-family--termina) !important;
+        }
+
+        .wp-block-heading.has-inter-font-family {
+            font-family: var(--wp--preset--font-family--inter) !important;
+        }
+
+        .wp-block-group.has-dark-blue-color {
+            color: var(--wp--preset--color--dark-blue) !important;
+        }
+
+        .wp-block-group.has-brand-blue-color {
+            color: var(--wp--preset--color--brand-blue) !important;
+        }
+
+        .wp-block-group.has-brand-blue-80-color {
+            color: var(--wp--preset--color--brand-blue-80) !important;
+        }
+
+        .wp-block-group.has-brand-blue-65-color {
+            color: var(--wp--preset--color--brand-blue-65) !important;
+        }
+
+        .wp-block-group.has-brand-blue-40-color {
+            color: var(--wp--preset--color--brand-blue-40) !important;
+        }
+
+        .wp-block-group.has-blue-gray-01-color {
+            color: var(--wp--preset--color--blue-gray-01) !important;
+        }
+
+        .wp-block-group.has-blue-gray-02-color {
+            color: var(--wp--preset--color--blue-gray-02) !important;
+        }
+
+        .wp-block-group.has-blue-gray-03-color {
+            color: var(--wp--preset--color--blue-gray-03) !important;
+        }
+
+        .wp-block-group.has-blue-gray-04-color {
+            color: var(--wp--preset--color--blue-gray-04) !important;
+        }
+
+        .wp-block-group.has-med-gray-01-color {
+            color: var(--wp--preset--color--med-gray-01) !important;
+        }
+
+        .wp-block-group.has-med-gray-02-color {
+            color: var(--wp--preset--color--med-gray-02) !important;
+        }
+
+        .wp-block-group.has-med-gray-03-color {
+            color: var(--wp--preset--color--med-gray-03) !important;
+        }
+
+        .wp-block-group.has-med-gray-04-color {
+            color: var(--wp--preset--color--med-gray-04) !important;
+        }
+
+        .wp-block-group.has-brand-orange-01-color {
+            color: var(--wp--preset--color--brand-orange-01) !important;
+        }
+
+        .wp-block-group.has-brand-orange-02-color {
+            color: var(--wp--preset--color--brand-orange-02) !important;
+        }
+
+        .wp-block-group.has-brand-orange-03-color {
+            color: var(--wp--preset--color--brand-orange-03) !important;
+        }
+
+        .wp-block-group.has-brand-orange-04-color {
+            color: var(--wp--preset--color--brand-orange-04) !important;
+        }
+
+        .wp-block-group.has-light-mid-gray-2-color {
+            color: var(--wp--preset--color--light-mid-gray-2) !important;
+        }
+
+        .wp-block-group.has-light-mid-gray-3-color {
+            color: var(--wp--preset--color--light-mid-gray-3) !important;
+        }
+
+        .wp-block-group.has-mid-gray-color {
+            color: var(--wp--preset--color--mid-gray) !important;
+        }
+
+        .wp-block-group.has-gray-700-color {
+            color: var(--wp--preset--color--gray-700) !important;
+        }
+
+        .wp-block-group.has-light-gray-01-color {
+            color: var(--wp--preset--color--light-gray-01) !important;
+        }
+
+        .wp-block-group.has-light-gray-02-color {
+            color: var(--wp--preset--color--light-gray-02) !important;
+        }
+
+        .wp-block-group.has-light-gray-03-color {
+            color: var(--wp--preset--color--light-gray-03) !important;
+        }
+
+        .wp-block-group.has-light-gray-04-color {
+            color: var(--wp--preset--color--light-gray-04) !important;
+        }
+
+        .wp-block-group.has-neutral-5-color {
+            color: var(--wp--preset--color--neutral-5) !important;
+        }
+
+        .wp-block-group.has-neutral-10-color {
+            color: var(--wp--preset--color--neutral-10) !important;
+        }
+
+        .wp-block-group.has-neutral-20-color {
+            color: var(--wp--preset--color--neutral-20) !important;
+        }
+
+        .wp-block-group.has-neutral-40-color {
+            color: var(--wp--preset--color--neutral-40) !important;
+        }
+
+        .wp-block-group.has-neutral-60-color {
+            color: var(--wp--preset--color--neutral-60) !important;
+        }
+
+        .wp-block-group.has-neutral-80-color {
+            color: var(--wp--preset--color--neutral-80) !important;
+        }
+
+        .wp-block-group.has-neutral-90-color {
+            color: var(--wp--preset--color--neutral-90) !important;
+        }
+
+        .wp-block-group.has-white-color {
+            color: var(--wp--preset--color--white) !important;
+        }
+
+        .wp-block-group.has-black-color {
+            color: var(--wp--preset--color--black) !important;
+        }
+
+        .wp-block-group.has-dark-blue-background-color {
+            background-color: var(--wp--preset--color--dark-blue) !important;
+        }
+
+        .wp-block-group.has-brand-blue-background-color {
+            background-color: var(--wp--preset--color--brand-blue) !important;
+        }
+
+        .wp-block-group.has-brand-blue-80-background-color {
+            background-color: var(--wp--preset--color--brand-blue-80) !important;
+        }
+
+        .wp-block-group.has-brand-blue-65-background-color {
+            background-color: var(--wp--preset--color--brand-blue-65) !important;
+        }
+
+        .wp-block-group.has-brand-blue-40-background-color {
+            background-color: var(--wp--preset--color--brand-blue-40) !important;
+        }
+
+        .wp-block-group.has-blue-gray-01-background-color {
+            background-color: var(--wp--preset--color--blue-gray-01) !important;
+        }
+
+        .wp-block-group.has-blue-gray-02-background-color {
+            background-color: var(--wp--preset--color--blue-gray-02) !important;
+        }
+
+        .wp-block-group.has-blue-gray-03-background-color {
+            background-color: var(--wp--preset--color--blue-gray-03) !important;
+        }
+
+        .wp-block-group.has-blue-gray-04-background-color {
+            background-color: var(--wp--preset--color--blue-gray-04) !important;
+        }
+
+        .wp-block-group.has-med-gray-01-background-color {
+            background-color: var(--wp--preset--color--med-gray-01) !important;
+        }
+
+        .wp-block-group.has-med-gray-02-background-color {
+            background-color: var(--wp--preset--color--med-gray-02) !important;
+        }
+
+        .wp-block-group.has-med-gray-03-background-color {
+            background-color: var(--wp--preset--color--med-gray-03) !important;
+        }
+
+        .wp-block-group.has-med-gray-04-background-color {
+            background-color: var(--wp--preset--color--med-gray-04) !important;
+        }
+
+        .wp-block-group.has-brand-orange-01-background-color {
+            background-color: var(--wp--preset--color--brand-orange-01) !important;
+        }
+
+        .wp-block-group.has-brand-orange-02-background-color {
+            background-color: var(--wp--preset--color--brand-orange-02) !important;
+        }
+
+        .wp-block-group.has-brand-orange-03-background-color {
+            background-color: var(--wp--preset--color--brand-orange-03) !important;
+        }
+
+        .wp-block-group.has-brand-orange-04-background-color {
+            background-color: var(--wp--preset--color--brand-orange-04) !important;
+        }
+
+        .wp-block-group.has-light-mid-gray-2-background-color {
+            background-color: var(--wp--preset--color--light-mid-gray-2) !important;
+        }
+
+        .wp-block-group.has-light-mid-gray-3-background-color {
+            background-color: var(--wp--preset--color--light-mid-gray-3) !important;
+        }
+
+        .wp-block-group.has-mid-gray-background-color {
+            background-color: var(--wp--preset--color--mid-gray) !important;
+        }
+
+        .wp-block-group.has-gray-700-background-color {
+            background-color: var(--wp--preset--color--gray-700) !important;
+        }
+
+        .wp-block-group.has-light-gray-01-background-color {
+            background-color: var(--wp--preset--color--light-gray-01) !important;
+        }
+
+        .wp-block-group.has-light-gray-02-background-color {
+            background-color: var(--wp--preset--color--light-gray-02) !important;
+        }
+
+        .wp-block-group.has-light-gray-03-background-color {
+            background-color: var(--wp--preset--color--light-gray-03) !important;
+        }
+
+        .wp-block-group.has-light-gray-04-background-color {
+            background-color: var(--wp--preset--color--light-gray-04) !important;
+        }
+
+        .wp-block-group.has-neutral-5-background-color {
+            background-color: var(--wp--preset--color--neutral-5) !important;
+        }
+
+        .wp-block-group.has-neutral-10-background-color {
+            background-color: var(--wp--preset--color--neutral-10) !important;
+        }
+
+        .wp-block-group.has-neutral-20-background-color {
+            background-color: var(--wp--preset--color--neutral-20) !important;
+        }
+
+        .wp-block-group.has-neutral-40-background-color {
+            background-color: var(--wp--preset--color--neutral-40) !important;
+        }
+
+        .wp-block-group.has-neutral-60-background-color {
+            background-color: var(--wp--preset--color--neutral-60) !important;
+        }
+
+        .wp-block-group.has-neutral-80-background-color {
+            background-color: var(--wp--preset--color--neutral-80) !important;
+        }
+
+        .wp-block-group.has-neutral-90-background-color {
+            background-color: var(--wp--preset--color--neutral-90) !important;
+        }
+
+        .wp-block-group.has-white-background-color {
+            background-color: var(--wp--preset--color--white) !important;
+        }
+
+        .wp-block-group.has-black-background-color {
+            background-color: var(--wp--preset--color--black) !important;
+        }
+
+        .wp-block-group.has-dark-blue-border-color {
+            border-color: var(--wp--preset--color--dark-blue) !important;
+        }
+
+        .wp-block-group.has-brand-blue-border-color {
+            border-color: var(--wp--preset--color--brand-blue) !important;
+        }
+
+        .wp-block-group.has-brand-blue-80-border-color {
+            border-color: var(--wp--preset--color--brand-blue-80) !important;
+        }
+
+        .wp-block-group.has-brand-blue-65-border-color {
+            border-color: var(--wp--preset--color--brand-blue-65) !important;
+        }
+
+        .wp-block-group.has-brand-blue-40-border-color {
+            border-color: var(--wp--preset--color--brand-blue-40) !important;
+        }
+
+        .wp-block-group.has-blue-gray-01-border-color {
+            border-color: var(--wp--preset--color--blue-gray-01) !important;
+        }
+
+        .wp-block-group.has-blue-gray-02-border-color {
+            border-color: var(--wp--preset--color--blue-gray-02) !important;
+        }
+
+        .wp-block-group.has-blue-gray-03-border-color {
+            border-color: var(--wp--preset--color--blue-gray-03) !important;
+        }
+
+        .wp-block-group.has-blue-gray-04-border-color {
+            border-color: var(--wp--preset--color--blue-gray-04) !important;
+        }
+
+        .wp-block-group.has-med-gray-01-border-color {
+            border-color: var(--wp--preset--color--med-gray-01) !important;
+        }
+
+        .wp-block-group.has-med-gray-02-border-color {
+            border-color: var(--wp--preset--color--med-gray-02) !important;
+        }
+
+        .wp-block-group.has-med-gray-03-border-color {
+            border-color: var(--wp--preset--color--med-gray-03) !important;
+        }
+
+        .wp-block-group.has-med-gray-04-border-color {
+            border-color: var(--wp--preset--color--med-gray-04) !important;
+        }
+
+        .wp-block-group.has-brand-orange-01-border-color {
+            border-color: var(--wp--preset--color--brand-orange-01) !important;
+        }
+
+        .wp-block-group.has-brand-orange-02-border-color {
+            border-color: var(--wp--preset--color--brand-orange-02) !important;
+        }
+
+        .wp-block-group.has-brand-orange-03-border-color {
+            border-color: var(--wp--preset--color--brand-orange-03) !important;
+        }
+
+        .wp-block-group.has-brand-orange-04-border-color {
+            border-color: var(--wp--preset--color--brand-orange-04) !important;
+        }
+
+        .wp-block-group.has-light-mid-gray-2-border-color {
+            border-color: var(--wp--preset--color--light-mid-gray-2) !important;
+        }
+
+        .wp-block-group.has-light-mid-gray-3-border-color {
+            border-color: var(--wp--preset--color--light-mid-gray-3) !important;
+        }
+
+        .wp-block-group.has-mid-gray-border-color {
+            border-color: var(--wp--preset--color--mid-gray) !important;
+        }
+
+        .wp-block-group.has-gray-700-border-color {
+            border-color: var(--wp--preset--color--gray-700) !important;
+        }
+
+        .wp-block-group.has-light-gray-01-border-color {
+            border-color: var(--wp--preset--color--light-gray-01) !important;
+        }
+
+        .wp-block-group.has-light-gray-02-border-color {
+            border-color: var(--wp--preset--color--light-gray-02) !important;
+        }
+
+        .wp-block-group.has-light-gray-03-border-color {
+            border-color: var(--wp--preset--color--light-gray-03) !important;
+        }
+
+        .wp-block-group.has-light-gray-04-border-color {
+            border-color: var(--wp--preset--color--light-gray-04) !important;
+        }
+
+        .wp-block-group.has-neutral-5-border-color {
+            border-color: var(--wp--preset--color--neutral-5) !important;
+        }
+
+        .wp-block-group.has-neutral-10-border-color {
+            border-color: var(--wp--preset--color--neutral-10) !important;
+        }
+
+        .wp-block-group.has-neutral-20-border-color {
+            border-color: var(--wp--preset--color--neutral-20) !important;
+        }
+
+        .wp-block-group.has-neutral-40-border-color {
+            border-color: var(--wp--preset--color--neutral-40) !important;
+        }
+
+        .wp-block-group.has-neutral-60-border-color {
+            border-color: var(--wp--preset--color--neutral-60) !important;
+        }
+
+        .wp-block-group.has-neutral-80-border-color {
+            border-color: var(--wp--preset--color--neutral-80) !important;
+        }
+
+        .wp-block-group.has-neutral-90-border-color {
+            border-color: var(--wp--preset--color--neutral-90) !important;
+        }
+
+        .wp-block-group.has-white-border-color {
+            border-color: var(--wp--preset--color--white) !important;
+        }
+
+        .wp-block-group.has-black-border-color {
+            border-color: var(--wp--preset--color--black) !important;
+        }
+
+        .wp-block-group.has-light-gray-to-mid-gray-gradient-background {
+            background: var(--wp--preset--gradient--light-gray-to-mid-gray) !important;
+        }
+
+        .wp-block-navigation a:where(:not(.wp-element-button)) {
+            color: inherit;
+        }
+
+        .wp-block-pullquote {
+            font-size: 1.5em;
+            line-height: 1.6;
+        }
+    </style>
+    <link rel='stylesheet' id='styles-css' href='https://mastersintrading.com/wp-content/themes/mit/dist/css/style.css?ver=b64536aac57698584cf4' type='text/css' media='all' />
+    <link rel='stylesheet' id='typekit-css' href='//use.typekit.net/yus2rgq.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='elasticpress-facets-css' href='https://mastersintrading.com/wp-content/plugins/elasticpress/dist/css/facets-styles.css?ver=7d568203f3965dc85d8a' type='text/css' media='all' />
+    <script id="jquery-core-js" src="https://mastersintrading.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" data-osano="ESSENTIAL" type="text/javascript"></script>
+    <script type="text/javascript" src="https://mastersintrading.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+    <script id="monetate-js" src="//se.monetate.net/js/2/a-64c35d56/p/mastersintrading.com/entry.js" data-osano="ANALYTICS" type="text/plain" class="ipm-osano-js" defer></script>
+    <link rel="https://api.w.org/" href="https://mastersintrading.com/wp-json/" />
+    <link rel="alternate" type="application/json" href="https://mastersintrading.com/wp-json/wp/v2/pages/2" />
+    <link rel='shortlink' href='https://mastersintrading.com/' />
+    <link rel="alternate" type="application/json+oembed" href="https://mastersintrading.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmastersintrading.com%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="https://mastersintrading.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmastersintrading.com%2F&#038;format=xml" />
+    <!-- Cobrowse.io script start -->
+    <script data-osano="ANALYTICS" type="text/plain" class="ipm-osano-js">
+        (function(w,t,c,p,s,e){p=new Promise(function(r){w[c]={client:function(){if(!s){ s=document.createElement(t);s.src='https://js.cobrowse.io/CobrowseIO.js';s.async=1; e=document.getElementsByTagName(t)[0];e.parentNode.insertBefore(s,e);s.onload=function()
+        {r(w[c]);};}return p;}};});})(window,'script','CobrowseIO'); CobrowseIO.license = "2u8K9nKukpMp1Q"; CobrowseIO.client().then(function(){ CobrowseIO.start(); });
+    </script>
+    <!-- Cobrowse.io script end -->
+    <link rel='manifest' href='https://mastersintrading.com/wp-content/themes/mit/manifest.json' />
+    <script data-osano="ANALYTICS" type="text/plain" class="ipm-osano-js">
+        !function(){"use strict";var o=window.jstag||(window.jstag={}),r=[];function n(e){o[e]=function(){for(var n=arguments.length,t=new Array(n),i=0;i
+        <n;i++)t[i]=arguments[i];r.push([e,t])}}n( "send"),n( "mock"),n( "identify"),n( "pageView"),n(
+            "unblock"),n( "getid"),n( "setid"),n( "loadEntity"),n( "getEntity"),n( "on"),n( "once"),n( "call"),o.loadScript=function(n,t,i){var e=document.createElement( "script");e.async=!0,e.src=n,e.onload=t,e.onerror=i;var o=document.getElementsByTagName(
+            "script")[0],r=o&&o.parentNode||document.head||document.body,c=o||r.lastChild;return null!=c?r.insertBefore(e,c):r.appendChild(e),this},o.init=function n(t){return this.config=t,this.loadScript(t.src,function(){if(o.init===n)throw new Error(
+            "Load error!");o.init(o.config),function(){for(var n=0;n<r.length;n++){var t=r[n][0],i=r[n][1];o[t].apply(o,i)}r=void 0}()}),this}}(); // Define config and initialize Lytics tracking tag. jstag.init({ src:
+            '//c.lytics.io/api/tag/df75ddd37cbd201124742ab02344cc61/latest.min.js' }); </script>
+            <script data-osano="ANALYTICS" type="text/plain" class="ipm-osano-js">function e(e){var t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1],c=document.createElement("script");c.src=e,t?c.type="module":(c.async=!0,c.type="text/javascript",c.setAttribute("nomodule",""));var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(c,n)}function
+                t(t,c,n){var a,o,r;null!==(a=t.marfeel)&&void 0!==a||(t.marfeel={}),null!==(o=(r=t.marfeel).cmd)&&void 0!==o||(r.cmd=[]),t.marfeel.config=n,t.marfeel.config.accountId=c;var i=" https://sdk.mrf.io/statics";e("".concat(i,"/marfeel-sdk.js?id=").concat(c),!0),e("".concat(i,"/marfeel-sdk.es5.js?id=").concat(c),!1)}!function(e,c){var
+                n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};t(e,c,n)}(window,1442,{});</script>
+
+            <script data-osano="ANALYTICS" type="text/plain" class="ipm-osano-js">
+                let pageVarSet = false; const setMarfeelPageVar = () => { if (pageVarSet) { return; } if ( typeof window.marfeel !== 'undefined' && typeof window.marfeel.cmd !== 'undefined' ) { pageVarSet = true; window.marfeel.cmd.push([ 'compass', function(compass)
+                { compass.setPageVar('open'); } ]); } else { setTimeout(function () { setMarfeelPageVar(); }, 100); } }; setMarfeelPageVar();
+            </script>
+
+            <!-- <script data-osano="ANALYTICS" type="text/plain" class="ipm-osano-js">
+			let userTypeSet = false;
+
+			const setMarfeelUserType = async () => {
+				if (userTypeSet) {
+					return;
+				}
+
+				if (
+					typeof window.marfeel !== 'undefined' &&
+					typeof window.marfeel.cmd !== 'undefined' &&
+					'undefined' !== typeof window.ipAuthentication &&
+					'undefined' !== typeof window.ipAuthentication.isUserLoggedIn &&
+					await window.ipAuthentication.isUserLoggedIn()
+				) {
+					userTypeSet = true;
+
+					window.marfeel.cmd.push([
+						'compass',
+						function (compass) {
+							compass.setUserType('paid');
+						},
+					]);
+				} else {
+					setTimeout(function () {
+						setMarfeelUserType();
+					}, 100);
+				}
+			};
+
+			setMarfeelUserType();
+		</script> -->
+            <meta property="mrf:tags" content="Page Type:Homepage" />
+            <link rel="apple-touch-icon" href="https://mastersintrading.com/wp-content/uploads/2024/04/Bull-Favicon.png" />
+            <meta name="msapplication-TileImage" content="https://mastersintrading.com/wp-content/uploads/2024/04/Bull-Favicon.png" />
+
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    "pageType": "Homepage"
+                });
+            </script>
+            <!-- Google Tag Manager -->
+            <script data-osano="ANALYTICS" type="text/plain" class="ipm-osano-js">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-N7BC');
+            </script>
+            <!-- End Google Tag Manager -->
+</head>
+
+<body class="home page-template page-template-templates page-template-homepage page-template-templateshomepage-php page page-id-2 mit-theme">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-GTM-N7BC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <a href="#main-content" class="screen-reader-text is-focusable">Skip to Content</a>
+
+    <header id="top" class="hide-on-print site-header">
+
+        <!-- Primary Navigation bar -->
+        <div class="container primary">
+            <div class="primary-top-container">
+                <div class="primary-logo-container">
+                    <a itemprop="url" href="https://mastersintrading.com/" rel="home" class="primary-logo-link">
+														<img class="primary-logo" itemprop="logo" src="https://mastersintrading.com/wp-content/uploads/2024/04/MIT-logo-2x.png" alt="Premium logo" />
+
+															<h1 class="screen-reader-text">
+									Masters in Trading								</h1>
+													</a>
+                </div>
+
+                <div class="primary-button-container">
+                    <button id="search-toggle" class="search-toggle" aria-controls="primary-search">
+								<span class="icon-search" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" fill="none"><path fill="#2F2A2B" d="M17.083 8.481a8.114 8.114 0 1 1-16.228 0 8.114 8.114 0 0 1 16.228 0zm-14.2 0a6.085 6.085 0 1 0 12.171 0 6.085 6.085 0 0 0-12.17 0z" /><path stroke="#2F2A2B" stroke-linecap="round" stroke-width="2" d="m15.783 12.639 5.048 3.957" /></svg>								</span>
+
+								<span class="icon-close" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path stroke="#000" stroke-width="2" d="m1 1 16 16m0-16L1 17" /></svg>								</span>
+							</button>
+
+                    <a class="primary-menu-toggle" href="#primary-nav" aria-controls="primary-nav">
+							<span class="screen-reader-text">Primary Menu</span>
+							<span class="menu-icon--open">
+								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" fill="none"><path stroke="#2F2A2B" stroke-width="2" d="M.559 1H22M.559 7.632H22M.559 15H22" /></svg>							</span>
+
+							<span class="menu-icon--close">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18"><path stroke="#000" stroke-width="2" d="m1 1 16 16m0-16L1 17" /></svg>							</span>
+						</a>
+                </div>
+
+                <div class="primary-right-col">
+
+                    <div id="primary-search">
+                        <form role="search" id="searchform" class="primary-search-form" method="get" action="https://mastersintrading.com/">
+                            <meta itemprop="target" content="https://mastersintrading.com/?s={s}" />
+
+                            <label class="primary-search-label" for="primary-search-input">
+			<span class="screen-reader-text">Search for:</span>
+		</label>
+
+                            <input class="primary-search-input" itemprop="query-input" type="search" id="primary-search-input" value="" placeholder="Search..." name="s" />
+
+                            <input class="primary-search-submit screen-reader-text" type="submit" value="Submit">
+                        </form>
+                    </div>
+
+                    <!-- Subscriber Bar -->
+
+                    <div class="subscriber-menus">
+
+                        <nav class="js-subscriber-bar-toggle" role="navigation">
+
+                            <div class="subscriber-buttons-login">
+                                <a class="subscriber-button subscriber-button--sign-up btn" href="https://signup.mastersintrading.com/?cid=MKT797092&#038;eid=MKT800546">
+					Sign Up				</a>
+                                <a class="subscriber-button subscriber-button--login btn" href="https://mastersintrading.com/mit-login/?mit_from=https://mastersintrading.com/">
+					Log In				</a>
+                            </div>
+
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.primary-top-container -->
+
+            <div class="primary-bottom-container">
+                <nav class="site-navigation" role="navigation">
+                    <div class="menu-primary-menu-container">
+                        <ul id="primary-nav" class="primary-menu">
+                            <li id="menu-item-75" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-75"><a href="https://mastersintrading.com/" aria-current="page">Home</a></li>
+                            <li id="menu-item-88" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="https://mastersintrading.com/options-education/">Options Education</a></li>
+                            <li id="menu-item-1577" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1577"><a href="https://mastersintrading.com/products/">Products</a></li>
+                            <li id="menu-item-86" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-86"><a href="https://mastersintrading.com/about-mit/">About MIT</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- Subscriber Bar -->
+
+                <div class="subscriber-menus">
+
+                    <nav class="js-subscriber-bar-toggle" role="navigation">
+
+                        <div class="subscriber-buttons-login">
+                            <a class="subscriber-button subscriber-button--sign-up btn" href="https://signup.mastersintrading.com/?cid=MKT797092&#038;eid=MKT800546">
+					Sign Up				</a>
+                            <a class="subscriber-button subscriber-button--login btn" href="https://mastersintrading.com/mit-login/?mit_from=https://mastersintrading.com/">
+					Log In				</a>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="main-content" role="main">
+
+
+        <article class="container post-2 page type-page status-publish hentry">
+
+            <header class="screen-reader-text">
+                <h2>Home</h2>
+            </header>
+
+            <div class="page-body js-horizontal-scroll__limit">
+                <div class="wp-block-mit-authentication-limit-access no-bottom-margin has-access">
+
+
+                    <div class="wp-block-cover alignfull mit-hero-unpaid" style="padding-top:102px;padding-bottom:102px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-80 has-background-dim"></span><video class="wp-block-cover__video-background intrinsic-ignore" autoplay muted loop playsinline src="https://mastersintrading.com/wp-content/uploads/2024/04/ebd0-449c-bb2d-0fe9b5e29041.mp4"
+                            data-object-fit="cover"></video>
+                        <div class="wp-block-cover__inner-container is-layout-flow wp-block-cover-is-layout-flow">
+                            <div class="wp-block-group has-white-color has-text-color is-layout-constrained wp-block-group-is-layout-constrained">
+                                <div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-1 wp-block-columns-is-layout-flex">
+                                    <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:700px">
+                                        <h1 class="wp-block-heading has-white-color has-text-color has-display-l-font-size"><strong>Watch How Masters Trade Markets</strong></h1>
+
+
+
+                                        <p class="has-white-color has-text-color">Level up your trading skills with free, live training – every day the markets are open.</p>
+
+
+
+                                        <div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+                                            <div class="wp-block-button is-style-tertiary"><a class="wp-block-button__link wp-element-button" href="https://signup.mastersintrading.com/?cid=MKT797092&amp;eid=MKT800546">Sign Up to Get FREE Live Training Sessions</a></div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="wp-block-group alignfull newsletter-signup is-layout-constrained wp-block-group-is-layout-constrained">
+                        <p class="has-text-align-center newsletter-signup__subhead"><strong>Don&#8217;t miss out</strong></p>
+
+
+
+                        <h2 class="wp-block-heading has-text-align-center newsletter-signup__heading"><strong>Battle-Tested Strategies That Give You an Edge</strong></h2>
+
+
+
+                        <p class="has-text-align-center">Discover alpha-generating strategies and proprietary tools that help you master the art of trading stocks, options, and crypto</p>
+
+
+
+                        <div class="wp-block-buttons is-content-justification-center is-layout-flex wp-container-core-buttons-is-layout-2 wp-block-buttons-is-layout-flex">
+                            <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://mastersintrading.com/products/">Find the Right Strategy for You</a></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="wp-block-group alignfull block-pattern-about-jr has-neutral-5-background-color has-background is-layout-constrained wp-block-group-is-layout-constrained">
+                        <div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-2 wp-block-columns-is-layout-flex">
+                            <div class="wp-block-column has-image-md-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:33.33%">
+                                <figure class="wp-block-image size-full"><img fetchpriority="high" decoding="async" width="265" height="349" src="https://mastersintrading.com/wp-content/uploads/2024/04/image-1.png" alt="" class="wp-image-635" srcset="https://mastersintrading.com/wp-content/uploads/2024/04/image-1.png 265w, https://mastersintrading.com/wp-content/uploads/2024/04/image-1-228x300.png 228w"
+                                        sizes="(max-width: 265px) 100vw, 265px" /></figure>
+                            </div>
+
+
+
+                            <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:66.66%">
+                                <h3 class="wp-block-heading"><strong>Meet Your Instructor: Jonathan Rose</strong></h3>
+
+
+
+                                <p>Chief Investing Strategist, <em>Masters In Trading</em></p>
+
+
+
+                                <p>With 25+ years of market experience, including as a CME floor trader and partner of a proprietary trading firm, Jonathan is an investment pro and visionary who helped pioneer computer-based trading.</p>
+
+
+
+                                <p>Since his journey began in 1997, he&#8217;s trained over 100 professional traders and made millions in the market by leveraging options and equity strategies typically reserved for Wall Street insiders.</p>
+
+
+
+                                <div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+                                    <div class="wp-block-button is-style-fill"><a class="wp-block-button__link wp-element-button" href="https://mastersintrading.com/about-mit/">Learn More About the Founder</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </article>
+
+
+    </main>
+
+    <footer id="site-footer" class="hide-on-print" role="contentinfo">
+
+        <a id="back-to-top" class="back-to-top" href="#top" aria-label="Scroll to Top">
+	<svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" fill="none"><path stroke="#868686" d="M1.268 6.886 7.576.909l6.144 6.145" /></svg></a>
+        <div class="container footer">
+            <div class="footer-logo-social-container">
+
+                <div class="footer-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="281" height="26" fill="none"><path fill="#fff" d="M28.676 18.364c-.03.115-.054.23-.085.346.322.097.59.164.808.2.57.104 1.634.298 3.407-2.878.99-1.774 1.78-3.25 2.271-4.197-2.016 1.986-3.613 2.958-5.332 3.286a31.444 31.444 0 0 0-1.069 3.243Zm-3.607-3.274c-1.956.05-4.706.074-6.704.086 1.518.45 3.413 1.038 4.73 1.536l1.154.438c.334.127.668.255.996.376.091-.832 0-1.573-.158-2.435h-.012m-9.825.989c.066.571.181 2.156-.39 3.2l2.867 3.845c.2-.024.467-.018.74.158.456.297.717.941.772 1.864h2.229c-.085-.37-.377-1.08-1.3-1.846-1.627-1.342-2.787-3.723-2.836-3.826a.376.376 0 0 1 .11-.455c.018-.012 1.62-1.233 2.684-2.533-1.774-.558-3.565-1.068-4.203-1.25a7.166 7.166 0 0 1-.674.85m1.367-2.047c-.073.14-.14.273-.213.4 1.579 0 5.794-.018 8.532-.085-.133-.643-.279-1.226-.419-1.797-.364-1.464-.71-2.848-.71-4.774 0-2.27.65-3.99 1.348-5.186-.073.049-.146.091-.225.14a.243.243 0 0 1-.072.06c-3.887 2.6-5.339 5.484-7.98 10.713l-.268.522.006.007Z" /><path fill="#fff" d="M16.22 13.184c2.041-4.051 3.39-6.723 5.691-8.958a24.95 24.95 0 0 1-3.024.954c-1.118.279-1.931.485-2.563.643a76.753 76.753 0 0 0-2.466.638c-.947.267-2.708.765-3.655 2.763-.523 1.111-.608 2.168-.687 3.097-.06.771-.121 1.5-.413 2.138-.68 1.476-3.006 2.921-3.65 3.31-.036.279-.115.905-.291 2.162a401.674 401.674 0 0 0-.437 3.182c.17.024.352.073.516.2.407.328.57.917.492 1.84H7.84c-.055-.37-.249-1.16-.941-1.736-.856-.711-.905-1.853-.152-3.462l.012-.03c.413-.881 1.118-1.458 3.978-2.314 1.761-.529 2.872-.942 3.777-1.816a.357.357 0 0 1 .189-.188c.443-.48.844-1.081 1.25-1.895l.268-.522v-.006ZM5.866 11.72c.535-.638.675-1.73.426-3.328-.177-1.16-.043-2.028.394-2.532.28-.328.687-.48 1.203-.48 1.184 0 2.392 1.379 2.836 1.937.188-.176.376-.334.57-.467-.51-.65-1.9-2.21-3.406-2.21-.729 0-1.342.242-1.761.734-.583.674-.778 1.755-.565 3.134.206 1.342.103 2.277-.267 2.745-.28.352-.76.352-.766.352-.655 0-.923-.808-1.117-1.682a2.705 2.705 0 0 0-.036-.152c-.243-1.045-.717-1.737-1.373-2.016C1.47 7.53.717 7.688 0 8.24c.455.073 1.069.365 1.093 1.118.03.771-.06 1.664.692 2.283.723.595 1.92.844 3 .668.462-.079.796-.255 1.075-.589m27.596 4.67c-.632 1.13-1.209 1.883-1.725 2.381.51.698 1.992 2.781 2.514 4.36a.904.904 0 0 1 .425.134c.462.285.772.966.911 1.889h2.199c-.104-.37-.401-1.148-1.276-1.84-.097-.073-.607-.462-1.172-1.707-.668-1.476-1.148-3.498-1.433-6.006l-.443.796M42.104 5.97c.079.394.121.789.14 1.172.157-.025.333-.05.522-.073.516-.067 1.16-.158 1.888-.316 1.008-.219 1.452-.832 1.646-1.373-.893.614-1.937.65-4.196.59Z" /><path fill="#fff" d="M40.98 5.07a.368.368 0 0 1-.346.122.377.377 0 0 1-.292-.438c.134-.674.796-.759 1.792-.874.54-.067 1.22-.146 2.059-.328.983-.213 1.427-.796 1.627-1.318-.917.644-1.968.614-4.694.535-.723-.019-1.294.09-1.713.328a1.577 1.577 0 0 0-.443.358c-.528.638-.346 1.548-.346 1.56a.368.368 0 0 1-.286.438c-.024 0-.054.006-.079.006a.363.363 0 0 1-.358-.292c-.012-.048-.267-1.269.498-2.192.049-.06.103-.11.158-.164-1.342-.723-3.146-1.5-4.95-2.12-3.291-1.135-4.584-.783-6.31.408l-.011.012c-.007 0-.693.564-1.367 1.664-.62 1.008-1.36 2.696-1.366 5.004 0 1.834.316 3.11.686 4.59.164.657.334 1.33.486 2.102.34 1.75.51 3.055-.213 5.107l.82 3.529c.164.012.364.048.559.188.437.316.68.923.723 1.846h2.119c-.122-.37-.419-1.172-1.148-1.755-.795-.637-1.324-2.52-.613-5.21 1.111-4.227 3.905-10.106 6.88-12.687 0 0 .037-.03.061-.042.006 0 .018-.006.03-.012.013 0 .025-.013.037-.019.012 0 .024 0 .036-.006.013 0 .025 0 .037-.006h.072c.025 0 .05 0 .074.012 0 0 .012 0 .018.006.018 0 .03.013.048.019l.037.018c.006 0 .018.012.03.018l.037.037.012.012a.218.218 0 0 1 .054.097c0 .012.013.018.013.03s0 .025.006.037v.079c0 .006-.013.012-.013.024 0 .024-.042.048-.042.073-.37 1.548-.662 2.672-.686 3.085-.03.522.68.984 1.227 1.354l.328.225c.68.498 1.33 1.378 1.548 2.101.103.334.747.547 1.767.583.693.024.875.03 1.07-1.117.248-1.482.51-2.594.655-3.104.267-.923.285-1.992.042-3.09-.048-.238-.194-.535-.358-.833m-.601 3.59a.456.456 0 0 1-.425.055c-.103-.037-.407-.147-.686-1.167a.372.372 0 0 1 .255-.455.37.37 0 0 1 .455.255c.067.242.17.51.25.637a.352.352 0 0 1 .248.158.37.37 0 0 1-.097.516Z" /><path fill="#fff" d="M33.99 8.908c.018-.382.188-1.13.383-1.919-1.64 1.834-3.164 4.58-4.294 7.288 1.56-.425 3.091-1.512 5.09-3.595-.596-.425-1.227-.984-1.185-1.774m25.634 14.229h-2.095V2.009h2.064l3.45 15.498L66.51 2.01h2.1v21.128h-2.13V9.685l-2.697 11.563h-1.5L59.618 9.74v13.397Zm21.462-4.73h-4.494l-.9 4.736h-2.155l4.196-21.158h2.247l4.136 21.158h-2.156l-.868-4.736h-.007Zm-.274-1.859-1.95-10.67-1.979 10.67h3.93Zm15.772-10.19h-2.102c0-1.798-1.08-2.514-2.247-2.514-1.226 0-2.186.777-2.186 2.155 0 .99.42 1.92 1.172 3.03l3.717 5.363c1.318 1.92 1.767 3.176 1.767 4.646 0 2.575-1.767 4.318-4.409 4.318s-4.524-1.676-4.524-4.707h2.125c0 1.92 1.112 2.636 2.43 2.636 1.317 0 2.246-.899 2.246-2.338 0-.96-.212-1.707-1.257-3.207l-3.686-5.362c-1.08-1.585-1.676-3.085-1.676-4.373 0-2.605 1.889-4.196 4.318-4.196 2.429 0 4.318 1.622 4.318 4.555m9.164-2.284v19.057h-2.156V4.08h-3.061V2.01h8.332v2.07h-3.115Zm10.397 0v7.342h3.929v1.889h-3.929v7.761h5.368v2.065h-7.494V2.009h7.494V4.08h-5.368Zm11.18-2.07h4.105c2.636 0 4.464 1.615 4.464 4.767v5.125c0 2.605-1.112 3.869-2.697 4.433l2.788 6.802h-2.369c-.807-2.065-1.615-4.196-2.459-6.261h-1.676v6.261h-2.156V2.009Zm2.162 12.825h1.706c1.531 0 2.606-.6 2.606-3.388V6.77c0-2.04-1.166-2.696-2.606-2.696h-1.706v10.761Zm20.107-8.477h-2.095c0-1.798-1.081-2.514-2.247-2.514-1.227 0-2.186.777-2.186 2.155 0 .99.419 1.92 1.172 3.03l3.716 5.363c1.318 1.92 1.768 3.176 1.768 4.646 0 2.575-1.768 4.318-4.409 4.318-2.642 0-4.525-1.676-4.525-4.707h2.126c0 1.92 1.111 2.636 2.429 2.636 1.318 0 2.247-.899 2.247-2.338 0-.96-.206-1.707-1.257-3.207l-3.686-5.362c-1.081-1.585-1.676-3.085-1.676-4.373 0-2.605 1.888-4.196 4.317-4.196 2.43 0 4.318 1.622 4.318 4.555m14.588-4.354h-2.126v21.127h2.126V2.009Zm13.305 21.127-4.882-14.684v14.684h-2.132V2.009h1.95l4.919 14.927V2.01h2.125v21.128h-1.98ZM197.042 4.08v19.057h-2.156V4.08h-3.055V2.01h8.332v2.07h-3.121Zm8.277-2.07h4.106c2.635 0 4.463 1.615 4.463 4.767v5.125c0 2.605-1.111 3.869-2.696 4.433l2.787 6.802h-2.368c-.808-2.065-1.616-4.196-2.46-6.261h-1.676v6.261h-2.156V2.009Zm2.156 12.825h1.707c1.53 0 2.605-.6 2.605-3.388V6.77c0-2.04-1.166-2.696-2.605-2.696h-1.707v10.761Zm18.492 3.572h-4.494l-.899 4.736h-2.155l4.196-21.158h2.247l4.136 21.158h-2.156l-.869-4.736h-.006Zm-.267-1.859-1.949-10.67-1.98 10.67h3.929Zm16.962-9.595v11.21c0 3.267-1.828 4.974-4.464 4.974h-4.318V2.009h4.318c2.636.03 4.464 1.737 4.464 4.944Zm-4.707-2.873h-1.949v17.023h1.949c1.409 0 2.605-.778 2.605-2.94V6.953c0-2.096-1.196-2.879-2.605-2.879m12.796-2.064h-2.126v21.127h2.126V2.009Zm13.312 21.127-4.889-14.684v14.684h-2.126V2.009h1.95l4.913 14.927V2.01h2.131v21.128h-1.979ZM281 18.704c0 2.726-1.828 4.615-4.464 4.615-2.635 0-4.463-1.889-4.463-4.615v-12.2c0-2.758 1.828-4.677 4.463-4.677 2.636 0 4.434 1.889 4.464 4.616h-2.126c0-1.707-1.05-2.515-2.338-2.515-1.287 0-2.338.808-2.338 2.49v12.347c0 1.828 1.227 2.514 2.338 2.514 1.288 0 2.338-.808 2.338-2.514v-3.48h-2.398v-1.889H281v5.308Z" /></svg>                    </div>
+            </div>
+
+            <nav class="footer-menu-navigation" role="navigation">
+                <div class="footer-menu-container">
+                    <ul id="footer-menu" class="footer-menu">
+                        <li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-401"><a href="https://mastersintrading.com/about-mit/">About Us</a></li>
+                        <li id="menu-item-398" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-398"><a href="https://mastersintrading.com/contact-us/">Contact Us</a></li>
+                        <li id="menu-item-404" class="js-ipm-cookie-preference menu-item menu-item-type-custom menu-item-object-custom menu-item-404"><a href="#">Cookie Preferences</a></li>
+                        <li id="menu-item-407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-407"><a href="/privacy-policy/#adchoice">Ad Choice</a></li>
+                        <li id="menu-item-413" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-413"><a href="/privacy-policy/">Privacy Policy</a></li>
+                        <li id="menu-item-416" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-416"><a href="/cookie-policy/">Cookie Policy</a></li>
+                        <li id="menu-item-425" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-425"><a href="https://beaconstreet-privacy.my.onetrust.com/webform/c246f198-7123-4766-b29c-917342eff0f7/4c7fa27d-cb7b-49e0-8bb3-b30c3ca75b35">Do Not Sell My Information</a></li>
+                        <li id="menu-item-1724" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1724"><a href="https://mastersintrading.com/disclosures-and-disclaimers/">Disclosures and Disclaimers</a></li>
+                        <li id="menu-item-1727" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1727"><a href="https://mastersintrading.com/dmca-policy/">DMCA Policy</a></li>
+                        <li id="menu-item-1730" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1730"><a href="https://mastersintrading.com/terms-of-use/">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <p class="footer-financial-disclaimer">
+                Copyright © 2024 Masters in Trading. All rights reserved.<br>1125 N Charles St, Baltimore, MD 21201. </p>
+
+        </div>
+    </footer>
+
+    <style>
+        .primary-logo-container {
+            width: auto;
+        }
+
+        @media only screen and (min-width: 768px) {
+            .primary-logo-link {
+                max-width: 324px;
+            }
+            .primary-logo {
+                max-height: 29px;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .primary-logo-link {
+                max-width: 234px;
+            }
+            .primary-logo {
+                max-height: 21px;
+            }
+        }
+    </style>
+    <script data-osano="ANALYTICS" type="text/plain" class="ipm-osano-js">
+        window._mfq = window._mfq || []; (function() { var mf = document.createElement("script"); mf.type = "text/javascript"; mf.defer = true; mf.src = "//cdn.mouseflow.com/projects/c9fbfb42-6cd1-4650-beab-2d856d40de45.js"; document.getElementsByTagName("head")[0].appendChild(mf);
+        })();
+    </script>
+    <style id='core-block-supports-inline-css' type='text/css'>
+        .wp-container-core-columns-is-layout-1.wp-container-core-columns-is-layout-1 {
+            flex-wrap: nowrap;
+        }
+
+        .wp-container-core-buttons-is-layout-2.wp-container-core-buttons-is-layout-2 {
+            justify-content: center;
+        }
+
+        .wp-container-core-columns-is-layout-2.wp-container-core-columns-is-layout-2 {
+            flex-wrap: nowrap;
+        }
+
+        .wp-container-core-columns-is-layout-3.wp-container-core-columns-is-layout-3 {
+            flex-wrap: nowrap;
+        }
+    </style>
+    <script id="investorplace_frontend-js-js" src="https://mastersintrading.com/wp-content/mu-plugins/investorplace/dist/js/frontend.js?ver=0.1.7" data-osano="ESSENTIAL" type="text/javascript"></script>
+    <script type="text/javascript" id="avc_frontend-js-extra">
+        /* <![CDATA[ */
+        var AdRefreshControl = {
+            "advertiserIds": [],
+            "lineItemIds": [],
+            "sizesToExclude": "",
+            "slotIdsToExclude": [],
+            "viewabilityThreshold": "70",
+            "refreshInterval": "30",
+            "maximumRefreshes": "10",
+            "refreshCallback": ""
+        };
+        /* ]]> */
+    </script>
+    <script id="avc_frontend-js" src="https://mastersintrading.com/wp-content/plugins/ad-refresh-control/dist/js/frontend.js?ver=1.1.4" data-osano="MARKETING" type="text/plain" class="ipm-osano-js"></script>
+    <script id="mit-vendor-table-sorter-js" src="https://mastersintrading.com/wp-content/themes/mit/assets/js/third-party/jquery.tablesorter.min.js?ver=2.31.3" data-osano="ESSENTIAL" type="text/javascript"></script>
+    <script id="mit-vendor-highstock-js" src="https://mastersintrading.com/wp-content/themes/mit/assets/js/third-party/highstock.js?ver=7.1.1" data-osano="ESSENTIAL" type="text/javascript"></script>
+    <script id="mit-vendor-jquery-selectize-js" src="https://mastersintrading.com/wp-content/themes/mit/assets/js/third-party/jquery.selectize.js?ver=0.12.4" data-osano="ESSENTIAL" type="text/javascript"></script>
+    <script id="mit-vendor-moment-timezone-js" src="https://mastersintrading.com/wp-content/themes/mit/assets/js/third-party/moment-timezones.js?ver=2.24.0" data-osano="ESSENTIAL" type="text/javascript"></script>
+    <script type="text/javascript" id="mit-authentication-rest-api-js-extra">
+        /* <![CDATA[ */
+        var ipAuthenticationRestHelpers = {
+            "restUrl": "https:\/\/mastersintrading.com\/wp-json\/mit-authentication\/v1"
+        };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://mastersintrading.com/wp-content/plugins/ip-mastersintrading-wp-authentication/dist/js/restHelpers.js?ver=2022-07-07a" id="mit-authentication-rest-api-js"></script>
+    <script id="mit-theme-js" src="https://mastersintrading.com/wp-content/themes/mit/dist/js/theme.js?ver=7ccd1395794a614055c1" data-osano="ESSENTIAL" type="text/javascript"></script>
+    <script id="mit-table-sorter-js" src="https://mastersintrading.com/wp-content/themes/mit/dist/js/table-sorter.js?ver=d869bda4275fbc7ac488" data-osano="ESSENTIAL" type="text/javascript"></script>
+</body>
+
+</html>
